@@ -1,0 +1,49 @@
+# ---------------------------------------------
+# Advanced Security Assignment 1, Q4
+# Author: Haroun Kassouri
+# Date: 14/10/2024
+# Details: Program to implement Vigenère Cipher
+# ---------------------------------------------
+
+class Solution(object):
+    def vigenereCipher(self, plain_text, key, encrypt=True):
+        result = ""
+        
+        for i in range(len(plain_text)):
+            char = plain_text[i]
+            keychar = ord(key[i % len(key)]) - 97  
+            
+            if encrypt:
+                result += chr((ord(char) - 97 + keychar) % 26 + 97)  
+            else:
+                result += chr((ord(char) - 97 - keychar + 26) % 26 + 97)  
+
+        return result
+
+while True:
+    encrypt_decrypt = input('Would you like to encrypt or decrypt: (0 to exit)\n')
+
+    plain_text = "explanation"
+    key = 'leg' 
+       
+    sol = Solution()
+    
+    if encrypt_decrypt == 'Encrypt' or encrypt_decrypt == 'encrypt':
+        encrypted_message = sol.vigenereCipher(plain_text, key, encrypt=True)
+        print('\n------------------------------------------')
+        print('Encrypted Message:', encrypted_message)
+        print('------------------------------------------')
+        break
+    elif encrypt_decrypt == 'Decrypt' or encrypt_decrypt == 'decrypt':
+        decrypted_message = sol.vigenereCipher(plain_text, key, encrypt=False)
+        print('\n------------------------------------------')
+        print('Decrypted Message:', decrypted_message)
+        print('------------------------------------------')
+        break
+    elif encrypt_decrypt == '0':
+        print("Exiting program.")
+        break
+    else:
+        print('\n------------------------------------------')
+        print('Please Enter encrypt or decrypt')
+        print('------------------------------------------')  
