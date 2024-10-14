@@ -1,2 +1,2 @@
 # Cryptography-programmes
-Cryptography Programmes for Advanced Security
+Cryptography Programmes for Advanced Security Module
